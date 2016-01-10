@@ -1,0 +1,138 @@
+<?php
+    //  вся процедура работает на сессиях. Именно в ней хранятся данные  пользователя, пока он находится на сайте. Очень важно запустить их в  самом начале странички!!!
+    session_start();
+	$id = $_GET['id'];
+	//echo "$id";
+    ?>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<title>Квадраты</title>
+</head>
+<body onload="init()">
+<?php
+include ("db.php");
+?> 
+
+
+
+<table class="square" > 
+<?php 
+for ($k=1;$k<=5;$k++) { 
+	print "<tr>"; 
+	for ($j=1;$j<=5;$j++)
+	{
+		$result = mysql_query("SELECT grass FROM cell,game WHERE game.id = '$id' AND x='$k' AND y='$j' AND cell.id_game = game.id",$db);
+		$myrow = mysql_fetch_array($result);
+		$g = $myrow['grass'];
+		
+		switch ($g) {
+    case 0:
+		echo "<td><div data-x='$k' data-y='$j' data-i='$id' id=\"mysquare0\"></div></td>";
+        break;
+    case 1:
+		echo "<td><div data-x='$k' data-y='$j' data-i='$id' id=\"mysquare1\"></div></td>";
+        break;
+    case 2:
+		echo "<td><div data-x='$k' data-y='$j' data-i='$id' id=\"mysquare2\" ></div></td>";
+        break;
+	case 3:
+		echo "<td><div data-x='$k' data-y='$j' data-i='$id' id=\"mysquare3\"></div></td>";
+        break;
+    }
+		}
+		
+	print "</tr>"; 
+}
+?> 
+</table> 
+<script type="text/javascript">
+function getXmlHttp(){
+  var xmlhttp;
+  try {
+    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+  } catch (e) {
+    try {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (E) {
+      xmlhttp = false;
+    }
+  }
+  if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+    xmlhttp = new XMLHttpRequest();
+  }
+  return xmlhttp;
+}
+window.onload = function() {
+alert("hey");}
+document.onclick = function(evt)
+{
+  evt = evt || window.event;
+  var el = evt.target || evt.srcElement;
+ // alert(el.parentNode.img.src);
+  if (el.id != "") 
+  {
+	  function turn()
+	{
+		var req1 = getXmlHttp(); 
+		req1.onreadystatechange = function()
+		{
+					if (req1.readyState == 4)
+					{ 
+						if(req1.status == 200)
+						{ 
+						var n = JSON.parse(req1.responseText);
+							if (n.turn == 0)
+							{
+							alert("Подождите пока сходит вторая коровка!");
+							}
+						else 
+						{
+							$a = el.getAttribute("data-x");
+							
+							if ($a=="1")
+							{
+							el.id = "cat";
+							alert("Я кот, которого нарисовала Алиса! Мяу!");
+							}
+							if ($a==2)
+							{
+							el.id = "wolf";
+							alert("Я ВОЛК, которого нарисовала Алиса! Мяу!");
+							}
+							if ($a==3)
+							{
+							el.id = "fox";
+							alert("Мы лиса и бабочка");
+							}
+							if ($a==4)
+							{
+							el.id = "cow";
+							alert("я коровка");
+							}
+							if ($a==5)
+							{
+							el.id = "tiger";
+							alert("я тигррррррь рррр");
+							}
+							if (n.x != 0)
+							{
+								alert("steret");
+							}
+						}
+						}
+					}
+		}
+		$gid = '<?php echo $id;?>';
+		req1.open('POST', 'turn.php', true);
+					req1.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					req1.send("id="+$gid);  
+	}
+	  
+	  turn();
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+body, html {
+margin:0px;
+padding:0px;
+text-align:center;
+}
+#maket {
+width:400px;
+height:1200px;
+margin:70px auto;
+text-align:left;
+}
+
+#pic {
+margin:30px;
+margin-left:0px;
+border-color:rgb(64,199,129);
+border-width:5px;
+ border-style: solid; 
+width:100px;
+height:100px;
+}
+
+#exit {
+margin-top:10px;
+margin-right:10px;
+}
+
+#header{
+	font-size:32;
+	font-family:Comic Sans;
+	color:gray;
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+#left{
+	float: left;
+}
+#right{
+	float: right;
+background-color:green;
+background-image:url('/images/cow.png');
+width:160px;
+height:155px;
+}
+#footer{
+	float:right;
+}
+#reg{
+	
+}
+
+.square td{
+	height:100px;
+	width:100px;
+	background-color:gold;
+}
+
+.square{
+margin:30px auto;
+}
+
+.btn{
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .3em 0.5em calc(.6em + 3px);
+  border-radius: 3px;
+  background: rgb(64,199,129);
+  box-shadow: 0 -3px rgb(53,167,110) inset;
+  transition: 0.2s;
+}
+.btn:hover { background: rgb(53, 167, 110); }
+.btn:active {
+  background: rgb(33,147,90);
+  box-shadow: 0 3px rgb(33,147,90) inset;
+}
+
+.txt{
+	margin:10px auto;
+}
+
+#mysquare1{
+	background-color:greenyellow;
+	height:100px;
+	width:100px;
+}
+
+#mysquare2{
+	background-color:yellowgreen;
+	height:100px;
+	width:100px;
+}
+
+#mysquare3{
+	background-color:darkgreen;
+	height:100px;
+	width:100px;
+}
+
+#mysquare0{
+	background: -webkit-gradient(linear, left center, right center, from(red), color-stop(14%, orange), color-stop(28%, yellow), color-stop(42%, green), color-stop(56%, blue), to(violet));
+	height:100px;
+	width:100px;
+}
+
+#fight1{
+	background-image:url('/images/cow_battle.gif');
+	height:100px;
+	width:100px;
+}
+
+#gr{
+	height:100px;
+	width:100px;
+}
+
+
+
+#cat{
+	background-image:url('/images/cat_.png');
+	height:100px;
+	width:100px;
+}
+
+#cow{
+	background-image:url('/images/cow_.png');
+	height:100px;
+	width:100px;
+}
+
+#wolf{
+	background-image:url('/images/cow1_.png');
+	height:100px;
+	width:100px;
+}
+
+#fox{
+	background-image:url('/images/fox_.png');
+	height:100px;
+	width:100px;
+}
+
+#tiger{
+	background-image:url('/images/tiger_.png');
+	height:100px;
+	width:100px;
+}
+
+
+#tex {
+	color:rgb(64,199,129);
+    font-family: Pompadur, 'Comic Sans MS', cursive;
+   }
+
+}
